@@ -7,6 +7,7 @@ import {
   updateAlumni,
   searchAndDiscover,
   getCurrentUser,
+  changeCurrentPassword,
 } from "../controllers/user.controller.js";
 import { upload } from "../middlewares/multer.middleware.js";
 import { verifyJWT } from "../middlewares/auth.middleware.js";
@@ -22,7 +23,8 @@ router
 router
   .route("/update-alumni")
   .post(verifyJWT, upload.single("avatar"), updateAlumni);
-router.route("/my-profile").get(verifyJWT,getCurrentUser);
-router.route("/search-and-discover").get(verifyJWT,searchAndDiscover);
+router.route("/change-password").post(verifyJWT, changeCurrentPassword);
+router.route("/my-profile").get(verifyJWT, getCurrentUser);
+router.route("/search-and-discover").get(verifyJWT, searchAndDiscover);
 
 export default router;
